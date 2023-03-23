@@ -1,13 +1,441 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html{
+    background-color: black;
+    font-family: 'Kanit', sans-serif;
 }
+
+.wrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1{
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+    line-height: 100%;
+}
+
+h2{
+    width: 100%;
+    text-align: center;
+    font-size: 60px; 
+}
+
+h3{
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+}
+
+h4{
+    font-size: 25px;
+}
+
+h5{
+    position: absolute;
+    top: 25%;
+    font-size: 25px;
+    z-index: 2;
+}
+
+button{
+    width: 45%;
+    height: fit-content;
+    background-color: transparent;
+    font-family: 'Kanit', sans-serif;
+    font-size: 40px;
+    border: 2px solid white;
+    border-radius: 50px;
+    margin: auto;
+    transition: 0.3s ease;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+}
+
+a{
+    color: #55aaff;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/*---------------- START SCREEN & END SCREEN ----------------*/
+
+.transition_screen{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.transition_screen h1{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    font-size: 90px;
+}
+
+.transition_screen h1 em{
+    font-style: normal;
+    color: #ff0000;
+}
+
+.transition_screen h1 em:nth-child(2){
+    color: #39ff14;
+}
+
+
+.transition_screen h5{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.transition_screen .button_container{
+    flex-direction: column;
+    position: absolute;
+    top: 70%;
+}
+
+.transition_screen button{
+    margin-top: 30px;
+}
+
+.metric_toggle{
+    position: absolute;
+    top: 45%;
+    display: flex;
+    width: 600px;
+    margin: 50px;
+}
+
+.metric_toggle button{
+    width: 250px;
+}
+
+.selected{
+    background-color: white;
+    color: black;
+}
+
+.credits{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10px;
+    text-align: center;
+}
+
+.end{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(http://i.imgur.com/7ZHrijt.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
+.end h1{
+    font-size: 150px;
+    top: 5%;
+}
+
+.end h5{
+    position: absolute;
+    top: 22%;
+    text-align: center;
+}
+
+.end .flex{
+  position: absolute;  
+  top: 17%;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex h2{
+    width: fit-content;
+    font-size: 60px;
+    padding: 50px;
+}
+
+/*---------------- MANGA GAME ----------------*/
+
+.container{
+    display: flex;
+}
+
+.manga_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    transform: translateX(200%);
+    transition: 1s ease;
+}
+
+.manga_box img{
+    position: absolute;
+    width: 97%;
+    filter: blur(5px);
+}
+
+.overlay{
+    position: absolute;
+    right: 0;
+    opacity: 0.7;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.manga_info{
+    display: block;
+    width: 60%;
+    z-index: 2;
+}
+
+.manga_info h1{
+    padding-bottom: 20px;
+}
+
+.manga_info h2{
+    height: 115px;
+    font-size: 80px;
+    margin-top: -30px;
+}
+
+.manga_info h3{
+    margin-top: -20px;
+}
+
+.button_container{
+    width: 100%;
+    height: 115px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.ani_metric_text{
+    color:rgb(253,255,118);
+    width: 100%;
+    height: 115px;
+    text-align: center;   
+    font-size: 80px;
+    margin-top: -30px;
+    display: none;
+}
+
+.metric_text{
+    color: rgb(253,255,118);
+    width: 100%;
+    height: 115px;
+    text-align: center;   
+    font-size: 80px;
+    margin-top: -30px;
+    display: none;
+}
+
+.highscore{
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.score{
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.exit{
+    position: absolute;
+    right: 0;
+    top:0;
+    color: white;
+    font-size: 30px;
+    margin: 15px;
+    z-index: 3;
+    border: none;
+    width: fit-content;
+}
+
+.exit:hover{
+    opacity: .8;
+    background-color: transparent;
+    color: white;
+}
+
+/*---------------- MANGA BOX POSITIONS ----------------*/
+
+.pos_0{
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.pos_0 .metric_text{
+    display: block;
+}
+
+.pos_0 .button_container{
+    display: none;
+}
+
+.pos_1{
+    transform: translateX(0%);
+}
+
+.pos_1 .metric_text{
+    display: block;
+}
+
+.pos_1 .button_container{
+    display: none;
+}
+
+.pos_2{
+    transform: translateX(100%);
+}
+
+.pos_2 .ani_metric_text{
+    display: block;
+}
+
+.pos_3{
+    opacity: 0;
+}
+
+/*---------------- VS CIRCLE ----------------*/
+
+#middle_circle{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s ease;
+}
+
+#middle_circle h1{
+    color: black;
+    padding-top: 20px;
+    padding-right: 4px;
+
+}
+
+.to_disappear{
+    animation: disappear 1s forwards;
+}
+
+.to_appear{
+    animation: appear 1s forwards;
+}
+
+@keyframes disappear {
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    60%{
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+@keyframes appear {
+    0%{
+        transform: scale(0);
+    }
+    60%{
+        transform: translate(-50%, -50%) scale(0);
+    }
+    80%{
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/*---------------- MANGA WALLPAPER ----------------*/
+
+.background{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    justify-content: center;
+}
+
+.background:nth-child(2) .manga_column:first-of-type{
+    margin-left: 100px;
+}
+
+.background .overlay{
+    opacity: .8;
+}
+
+.manga_column{
+    display: block;
+    width: fit-content;
+}
+
+.bg_manga{
+    width: 103px;
+    height: 155px;
+    display: block;
+    margin: 21px;
+    border-radius: 20px;
+}
+
+/*---------------- LOADING ANIMATION ----------------*/
+
+.loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 16px solid #333;
+    border-top: 16px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
