@@ -35,7 +35,7 @@ function App() {
 
     const [mData, setMData] = React.useState(null)
     React.useEffect(() => {
-        axios.get("http://localhost:3000/data/game_data.json")
+        axios.get("data/game_data.html")
             .then(res => {
                 setMData(res.data)
                 setAppState(1)
