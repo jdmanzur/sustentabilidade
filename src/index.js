@@ -1,3 +1,4 @@
+import { HashRouter, Routes, Route } from "react-router-dom";
 import React from "react"
 import ReactDOM from "react-dom"
 import axios from 'axios'
@@ -6,6 +7,7 @@ import { StartScreen } from './startScreen.js'
 import { EndScreen } from './endScreen.js'
 import { GameScreen } from './gameScreen.js'
 import './App.css';
+
 
 
 function App() {
@@ -52,4 +54,15 @@ function App() {
     )
 }
 
-ReactDOM.render(<App />, document.getElementById("root"))
+//ReactDOM.render(<App />, document.getElementById("root"))
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<App/>} />
+      </Routes>
+    </HashRouter>
+  </React.StrictMode>,
+  document.getElementById("root"))
