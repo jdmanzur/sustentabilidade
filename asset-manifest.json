@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sustentabilidade/static/css/main.cf2b72b7.css",
+    "main.js": "/sustentabilidade/static/js/main.f0e05944.js",
+    "index.html": "/sustentabilidade/index.html",
+    "main.cf2b72b7.css.map": "/sustentabilidade/static/css/main.cf2b72b7.css.map",
+    "main.f0e05944.js.map": "/sustentabilidade/static/js/main.f0e05944.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf2b72b7.css",
+    "static/js/main.f0e05944.js"
+  ]
+}
