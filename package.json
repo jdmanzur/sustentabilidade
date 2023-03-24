@@ -1,7 +1,7 @@
 {
   "name": "sustentabilidade",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://jdmanzur.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
