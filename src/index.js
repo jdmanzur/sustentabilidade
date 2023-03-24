@@ -34,7 +34,7 @@ function App() {
 
     const [mData, setMData] = React.useState(null)
     React.useEffect(() => {
-        axios.get("/data/sus_data.json")
+        axios.get("public/data/sus_data.json")
             .then(res => {
                 setMData(res.data)
                 setAppState(1)
