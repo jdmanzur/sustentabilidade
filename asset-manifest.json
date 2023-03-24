@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/sustentabilidade/static/css/main.cf2b72b7.css",
-    "main.js": "/sustentabilidade/static/js/main.f0e05944.js",
+    "main.js": "/sustentabilidade/static/js/main.da637a3f.js",
     "index.html": "/sustentabilidade/index.html",
     "main.cf2b72b7.css.map": "/sustentabilidade/static/css/main.cf2b72b7.css.map",
-    "main.f0e05944.js.map": "/sustentabilidade/static/js/main.f0e05944.js.map"
+    "main.da637a3f.js.map": "/sustentabilidade/static/js/main.da637a3f.js.map"
   },
   "entrypoints": [
     "static/css/main.cf2b72b7.css",
-    "static/js/main.f0e05944.js"
+    "static/js/main.da637a3f.js"
   ]
 }
