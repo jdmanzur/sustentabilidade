@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
+
 *{
     margin: 0;
     padding: 0;
@@ -12,7 +13,8 @@ html{
 }
 
 .wrapper{
-    position: relative;
+    margin-top: -25px;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
