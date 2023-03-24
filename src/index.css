@@ -146,6 +146,7 @@ a:hover{
 }
 
 .end h1{
+    font-size: 95px;
     position: absolute;
     text-align: center;
     z-index: 2;
