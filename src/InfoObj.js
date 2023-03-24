@@ -16,7 +16,7 @@ let fetchedInfo = []
 function fetchInfo(infoArr){
     let r = 0
     do {
-        r = Math.round(Math.random() * 18)
+        r = Math.round(Math.random() * 23)
     } while (fetchedInfo.includes(r))
     fetchedInfo.push(r)
     return (
