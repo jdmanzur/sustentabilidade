@@ -34,7 +34,7 @@ function App() {
 
     const [mData, setMData] = React.useState(null)
     React.useEffect(() => {
-        axios.get("public/data/sus_data.json")
+        axios.get("https://raw.githubusercontent.com/jdmanzur/sustentabilidade/main/public/data/sus_data.json")
             .then(res => {
                 setMData(res.data)
                 setAppState(1)
