@@ -13,11 +13,11 @@ html{
 }
 
 .wrapper{
-    margin-top: -25px;
-    position: absolute;
+    position:fixed;
+    top:0;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    z-index: 999;
 }
 
 h1{
@@ -142,12 +142,13 @@ a:hover{
     background-image: url(https://i.pinimg.com/originals/35/e9/62/35e96299310b5ab3fb9fa402f566bda9.gif);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    z-index: -1;
+   
 }
 
 .end h1{
-    font-size: 125px;
-    top: 5%;
+    position: absolute;
+    text-align: center;
+    z-index: 2;
 }
 
 .end h5{
@@ -159,6 +160,16 @@ a:hover{
 .end .flex{
   position: absolute;  
   top: 17%;
+  z-index: 2;
+
+}
+
+.end .credits{
+    z-index: 2;
+}
+
+.end .button_container{
+    z-index: 2;
 }
 
 .flex{

@@ -45,7 +45,7 @@ function App() {
     }, [])
 
     return (
-        <div className={appState !== 3 ? "wrapper" : ""}>
+        <div className="wrapper">
             {appState === 0 && <div className="loading"></div>}
             {appState === 1 && <StartScreen mData={mData} handleClick={startGame} />}
             {appState === 2 && <GameScreen mData={mData} score={score}  highScore={highScore} handleLoss={handleLoss} handleScore={updateScore} />}

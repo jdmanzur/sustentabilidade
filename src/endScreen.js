@@ -6,7 +6,8 @@ function EndScreen(props) {
     
     return (
         <div className="transition_screen end">
-            <div className="end"><div className="overlay"></div></div>
+            <div className="overlay"></div>
+            
             <h1>Fim do Jogo!</h1>
             <h5>Aprenda mais sobre produção e consumo...
                 <br></br>
