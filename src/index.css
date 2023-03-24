@@ -7,7 +7,7 @@
 }
 
 html{
-    background-color: black;
+    background-color: rgb(18, 5, 54);
     font-family: 'Kanit', sans-serif;
 }
 
@@ -23,18 +23,19 @@ h1{
     text-align: center;
     font-size: 60px;
     line-height: 100%;
+
 }
 
 h2{
     width: 100%;
     text-align: center;
-    font-size: 60px; 
+    font-size: 50px; 
 }
 
 h3{
     width: 100%;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 h4{
@@ -43,7 +44,7 @@ h4{
 
 h5{
     position: absolute;
-    top: 25%;
+    top: 20%;
     font-size: 25px;
     z-index: 2;
 }
@@ -66,7 +67,7 @@ button:hover{
 }
 
 a{
-    color: #55aaff;
+    color: rgba(0,152,122,255);
     text-decoration: none;
 }
 
@@ -92,13 +93,8 @@ a:hover{
 
 .transition_screen h1 em{
     font-style: normal;
-    color: #ff0000;
+    color: rgba(0,152,122,255);
 }
-
-.transition_screen h1 em:nth-child(2){
-    color: #39ff14;
-}
-
 
 .transition_screen h5{
     text-align: center;
@@ -108,23 +104,11 @@ a:hover{
 .transition_screen .button_container{
     flex-direction: column;
     position: absolute;
-    top: 70%;
+    top: 60%;
 }
 
 .transition_screen button{
     margin-top: 30px;
-}
-
-.metric_toggle{
-    position: absolute;
-    top: 45%;
-    display: flex;
-    width: 600px;
-    margin: 50px;
-}
-
-.metric_toggle button{
-    width: 250px;
 }
 
 .selected{
@@ -141,18 +125,26 @@ a:hover{
     text-align: center;
 }
 
+.start{
+    position: absolute;
+    background-image: url(https://cdn.dribbble.com/users/2859475/screenshots/9841599/media/2d5bc73c42245d49f49db16343f69a64.gif);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: rgba(13,18,24,255);
+}
+
 .end{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(http://i.imgur.com/7ZHrijt.gif);
+    background-image: url(https://i.pinimg.com/originals/35/e9/62/35e96299310b5ab3fb9fa402f566bda9.gif);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: -1;
 }
 
 .end h1{
-    font-size: 150px;
+    font-size: 125px;
     top: 5%;
 }
 
@@ -173,17 +165,17 @@ a:hover{
 
 .flex h2{
     width: fit-content;
-    font-size: 60px;
+    font-size: 50px;
     padding: 50px;
 }
 
-/*---------------- MANGA GAME ----------------*/
+/*---------------- item GAME ----------------*/
 
 .container{
     display: flex;
 }
 
-.manga_box{
+.item_box{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -194,10 +186,11 @@ a:hover{
     transition: 1s ease;
 }
 
-.manga_box img{
+.item_box img{
     position: absolute;
-    width: 97%;
     filter: blur(5px);
+    width: 97%;
+
 }
 
 .overlay{
@@ -210,23 +203,23 @@ a:hover{
     z-index: 1;
 }
 
-.manga_info{
+.item_info{
     display: block;
     width: 60%;
     z-index: 2;
 }
 
-.manga_info h1{
+.item_info h1{
     padding-bottom: 20px;
 }
 
-.manga_info h2{
+.item_info h2{
     height: 115px;
-    font-size: 80px;
+    font-size: 75px;
     margin-top: -30px;
 }
 
-.manga_info h3{
+.item_info h3{
     margin-top: -20px;
 }
 
@@ -242,21 +235,32 @@ a:hover{
 .ani_metric_text{
     color:rgb(253,255,118);
     width: 100%;
-    height: 115px;
+    height: 100px;
     text-align: center;   
-    font-size: 80px;
-    margin-top: -30px;
+    font-size: 60px;
+    font-weight: bold;
+    justify-content: center;
+    margin-top: -25px;
+    margin-bottom: -25px;
     display: none;
 }
 
 .metric_text{
     color: rgb(253,255,118);
     width: 100%;
-    height: 115px;
-    text-align: center;   
-    font-size: 80px;
-    margin-top: -30px;
+    height: 100px;
+    text-align: center;  
+    justify-content: center; 
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: -25px;
+    margin-bottom: -25px;
     display: none;
+}
+
+.add-text{
+    margin-top: 20px;
+
 }
 
 .highscore{
@@ -291,7 +295,7 @@ a:hover{
     color: white;
 }
 
-/*---------------- MANGA BOX POSITIONS ----------------*/
+/*---------------- ITEM BOX POSITIONS ----------------*/
 
 .pos_0{
     opacity: 0;
@@ -387,55 +391,3 @@ a:hover{
         transform: translate(-50%, -50%) scale(1);
     }
 }
-
-/*---------------- MANGA WALLPAPER ----------------*/
-
-.background{
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    justify-content: center;
-}
-
-.background:nth-child(2) .manga_column:first-of-type{
-    margin-left: 100px;
-}
-
-.background .overlay{
-    opacity: .8;
-}
-
-.manga_column{
-    display: block;
-    width: fit-content;
-}
-
-.bg_manga{
-    width: 103px;
-    height: 155px;
-    display: block;
-    margin: 21px;
-    border-radius: 20px;
-}
-
-/*---------------- LOADING ANIMATION ----------------*/
-
-.loading{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 16px solid #333;
-    border-top: 16px solid white;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }

@@ -1,7 +1,7 @@
 import React from "react"
-import {fetchManga} from './MangaObj.js'
+import {fetchInfo} from './InfoObj.js'
 
-function MangaDisplay(props) {
+function InfoDisplay(props) {
     //var that animates metric, clicked shows components
     const [aniMetric, setAniMetric] = React.useState(0)
     const [clicked, setClicked] = React.useState(false)
@@ -15,11 +15,11 @@ function MangaDisplay(props) {
 
     function updateAniMetric(counter, higherClicked){
         if (counter < 100){
-            props.metricToggle ? animate(props.mList.score) : animate(props.mList.members)
+            animate(props.mList.value)
             setTimeout(() => updateAniMetric(counter += 1, higherClicked), 5)
         }
         else{
-            props.metricToggle ? setAniMetric(props.mList.score) : setAniMetric(props.mList.members)
+            setAniMetric(props.mList.value)
             higherClicked ? props.handleButtons(true) : props.handleButtons(false)
             setTimeout(reset, 1000)
         }
@@ -31,30 +31,35 @@ function MangaDisplay(props) {
     }
 
     function interpret(x) {
-        if (props.metricToggle) return x.toString().slice(0,1) + '.' +  x.toString().slice(1)
+        //if (props.metricToggle) return x.toString().slice(0,1) + '.' +  x.toString().slice(1)
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
     
     return (
-        <div id={props.id} className={props.style.concat(" manga_box")}>
+        <div id={props.id} className={props.style.concat(" item_box")}>
             <div className="overlay"></div>
             <img src={props.mList.image} alt={props.mList.name}/>
-            <div className="manga_info">
+
+            <div className="item_info">
                 <h1>{props.mList.name}</h1>
-                <h3>{props.metricToggle ? "has a" : "has"}</h3>
+                <br></br>
+                <h3>{props.mList.action}</h3>
                 {clicked && <div className="ani_metric_text">{interpret(aniMetric)}</div>}
                 <div className="metric_text">
-                    {props.metricToggle ? props.mList.scoreStr : props.mList.memberStr}
+                    {props.mList.valueStr}
                 </div>
+                <br></br>
+
                 {!clicked && <div className="button_container">
-                    <button onClick={() => handleClick(true)}>Higher</button>
-                    <button onClick={() => handleClick(false)}>Lower</button>
+                    <button onClick={() => handleClick(true)}>Mais</button>
+                    <button onClick={() => handleClick(false)}>Menos</button>
                 </div> }
-                <h3 className="diff">{props.metricToggle ? "score" : "members"}</h3>
+                <h3 className="add-text">{props.mList.additional}</h3>
             </div>
         </div>
     )
 }
+
 
 function GameScreen(props) {
     const [order, setOrder] = React.useState([0,1,2,3])
@@ -62,23 +67,23 @@ function GameScreen(props) {
     const [mList, setMList] = React.useState([{}, {}, {}, {}])
     const [animateButton, setAnimateButton] = React.useState(false)
 
-    //Inital fetchManga() is only called when first started
+    //primeira chamada
     React.useEffect(() => {
-        setMList([{}, fetchManga(props.mData), fetchManga(props.mData), {}])
+        setMList([{}, fetchInfo(props.mData), fetchInfo(props.mData), {}])
     }, [props.mData]);
 
-    function determineNewManga(prevMList){
-        let mangaArr = prevMList
-        //more accurate mod arithmetic done with order[3] % 4
-        mangaArr[((order[3] % 4) + 4) % 4] = fetchManga(props.mData)
-        return mangaArr
+    function determineNewInfo(prevMList){
+        let infoArr = prevMList
+        
+        infoArr[((order[3] % 4) + 4) % 4] = fetchInfo(props.mData)
+        return infoArr
     }
 
     function handleLogic(){
         props.handleScore()
         setOrder(prevOrder => prevOrder.slice(1).concat(prevOrder[0]))
         setStylePos(prevStyles => [prevStyles[3]].concat(prevStyles.slice(0,3)))
-        setMList(prevMList => determineNewManga(prevMList))
+        setMList(prevMList => determineNewInfo(prevMList))
         setAnimateButton(false)
     }
 
@@ -88,8 +93,7 @@ function GameScreen(props) {
     }
 
     function checkMetric(){
-        if (props.metricToggle) return (mList[order[1]].score <= mList[order[2]].score)
-        return (mList[order[1]].members <= mList[order[2]].members)
+        return (mList[order[1]].value <= mList[order[2]].value)
     }
 
     function handleButtons(higherButton){
@@ -98,46 +102,41 @@ function GameScreen(props) {
 
     return (
         <div className="container">
-            <MangaDisplay 
+            <InfoDisplay 
                 id={0} 
                 mList = {mList[0]}
                 style = {stylePos[0]}
                 current = {order[1]}
                 handleButtons = {handleButtons}
-                metricToggle={props.metricToggle}
             />
-            <MangaDisplay 
+            <InfoDisplay 
                 id={1} 
                 mList = {mList[1]}
                 style = {stylePos[1]}
                 current = {order[1]}
                 handleButtons = {handleButtons}
-                metricToggle={props.metricToggle}
             />
-            <MangaDisplay 
+            <InfoDisplay 
                 id={2} 
                 mList = {mList[2]}
                 style = {stylePos[2]}
                 current = {order[1]}
                 handleButtons = {handleButtons}
-                metricToggle={props.metricToggle}
             />
-            <MangaDisplay 
+            <InfoDisplay 
                 id={3} 
                 mList = {mList[3]}
                 style = {stylePos[3]}
                 current = {order[1]}
                 handleButtons = {handleButtons}
-                metricToggle={props.metricToggle}
             />
             
             <button className="exit" onClick={props.handleLoss}>{"\u2715"}</button>
             <div id="middle_circle" className={animateButton ? "to_disappear" : "to_appear"}>
                 <h1>VS</h1> 
             </div>
-            <h4 className="highscore">High Score: {props.highScore}</h4>
-            <h4 className="score">Score: {props.score}</h4>
-            <h4 className="credits">Data sourced from <a target={"_blank"} rel="noreferrer" href="https://myanimelist.net/topmanga.php?type=bypopularity">MyAnimeList</a></h4>
+            <h4 className="highscore">Recorde: {props.highScore}</h4>
+            <h4 className="score">Pontuação: {props.score}</h4>
         </div>
     )
 }

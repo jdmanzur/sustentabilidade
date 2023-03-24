@@ -5,15 +5,14 @@ import './index.css'
 import { StartScreen } from './startScreen.js'
 import { EndScreen } from './endScreen.js'
 import { GameScreen } from './gameScreen.js'
-//import logo from './logo.svg';
 import './App.css';
 
 
 function App() {
-  const [appState, setAppState] = React.useState(0)
+    const [appState, setAppState] = React.useState(0)
     const [score, setScore] = React.useState(0)
     const [highScore, setHighScore] = React.useState(0)
-    const [metricToggle, setMetricToggle] = React.useState(false)
+    //const [metricToggle, setMetricToggle] = React.useState(false)
 
     function startGame() {
         setScore(0)
@@ -35,7 +34,7 @@ function App() {
 
     const [mData, setMData] = React.useState(null)
     React.useEffect(() => {
-        axios.get("/data/game_data.json")
+        axios.get("/data/sus_data.json")
             .then(res => {
                 setMData(res.data)
                 setAppState(1)
@@ -46,8 +45,8 @@ function App() {
     return (
         <div className={appState !== 3 ? "wrapper" : ""}>
             {appState === 0 && <div className="loading"></div>}
-            {appState === 1 && <StartScreen mData={mData} metricToggle={metricToggle} setMetricToggle={setMetricToggle} handleClick={startGame} />}
-            {appState === 2 && <GameScreen mData={mData} metricToggle={metricToggle} score={score} highScore={highScore} handleLoss={handleLoss} handleScore={updateScore} />}
+            {appState === 1 && <StartScreen mData={mData} handleClick={startGame} />}
+            {appState === 2 && <GameScreen mData={mData} score={score}  highScore={highScore} handleLoss={handleLoss} handleScore={updateScore} />}
             {appState === 3 && <EndScreen mData={mData} score={score} highScore={highScore} startGame={startGame} returnToMenu={returnToMenu} />}
         </div>
     )
